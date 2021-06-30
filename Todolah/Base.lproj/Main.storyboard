@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Todolah" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Todolah" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3w-CM-hGP">
-                                <rect key="frame" x="0.0" y="44" width="453" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="chc-ks-CEl">
                                         <nil key="title"/>
@@ -63,18 +63,18 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="ZSz-9n-hAu" kind="presentation" id="6AM-ii-qKm"/>
-                        <segue destination="cDx-nl-2za" kind="presentation" id="A12-8A-5O5"/>
+                        <segue destination="ZSz-9n-hAu" kind="presentation" identifier="AddTodoItem" id="6AM-ii-qKm"/>
+                        <segue destination="cDx-nl-2za" kind="presentation" identifier="EditTodoItem" id="A12-8A-5O5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="95.652173913043484" y="75.669642857142847"/>
         </scene>
-        <!--View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="Hln-m5-zSe">
             <objects>
-                <viewController id="ZSz-9n-hAu" sceneMemberID="viewController">
+                <viewController id="ZSz-9n-hAu" customClass="AddViewController" customModule="Todolah" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EyO-qE-AXa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,8 +118,8 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uDe-Ul-Nqy">
                                                 <rect key="frame" x="0.0" y="36.666666666666657" width="374" height="263.33333333333337"/>
-                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
@@ -203,15 +203,18 @@
                             <constraint firstItem="EOS-Nh-gZw" firstAttribute="leading" secondItem="kbK-Ab-KXD" secondAttribute="leading" constant="20" id="nZ4-tX-6L2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="uDe-Ul-Nqy" id="Phe-wM-AnR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Lf-c3-w04" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1019" y="-135"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit View Controller-->
         <scene sceneID="VnW-ZZ-2mK">
             <objects>
-                <viewController id="cDx-nl-2za" sceneMemberID="viewController">
+                <viewController id="cDx-nl-2za" customClass="EditViewController" customModule="Todolah" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gfN-VS-fVS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -350,6 +353,9 @@
                             <constraint firstItem="kkn-re-EYg" firstAttribute="leading" secondItem="Pl0-nd-yln" secondAttribute="leading" constant="20" id="aEP-7g-BoO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="ZKQ-KU-Yz8" id="0fq-9N-g1y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHk-TZ-Nae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

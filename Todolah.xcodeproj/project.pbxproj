@@ -3,27 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60248C00268C2578003275FC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60248BFF268C2578003275FC /* AddViewController.swift */; };
+		60248C02268C2585003275FC /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60248C01268C2585003275FC /* EditViewController.swift */; };
 		6048D16426888A0100ADEB87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6048D16326888A0100ADEB87 /* AppDelegate.swift */; };
 		6048D16626888A0100ADEB87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6048D16526888A0100ADEB87 /* SceneDelegate.swift */; };
-		6048D16826888A0100ADEB87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6048D16726888A0100ADEB87 /* ViewController.swift */; };
+		6048D16826888A0100ADEB87 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6048D16726888A0100ADEB87 /* MainViewController.swift */; };
 		6048D16B26888A0100ADEB87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6048D16926888A0100ADEB87 /* Main.storyboard */; };
 		6048D16D26888A0300ADEB87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6048D16C26888A0300ADEB87 /* Assets.xcassets */; };
 		6048D17026888A0300ADEB87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6048D16E26888A0300ADEB87 /* LaunchScreen.storyboard */; };
+		A69C0109B06EBFEB4425B77A /* Pods_Todolah.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BBCE2A84DF751F25B177DE7 /* Pods_Todolah.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BBCE2A84DF751F25B177DE7 /* Pods_Todolah.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todolah.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60248BFF268C2578003275FC /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		60248C01268C2585003275FC /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		6048D16026888A0100ADEB87 /* Todolah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todolah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6048D16326888A0100ADEB87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6048D16526888A0100ADEB87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6048D16726888A0100ADEB87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6048D16726888A0100ADEB87 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6048D16A26888A0100ADEB87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6048D16C26888A0300ADEB87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6048D16F26888A0300ADEB87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6048D17126888A0300ADEB87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		657F8A9DA9C1827479E4492F /* Pods-Todolah.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todolah.debug.xcconfig"; path = "Target Support Files/Pods-Todolah/Pods-Todolah.debug.xcconfig"; sourceTree = "<group>"; };
+		8D28D5D5EB4EB84D22D1EDF3 /* Pods-Todolah.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todolah.release.xcconfig"; path = "Target Support Files/Pods-Todolah/Pods-Todolah.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A69C0109B06EBFEB4425B77A /* Pods_Todolah.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BD5B3AC3E57E087880A21D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				657F8A9DA9C1827479E4492F /* Pods-Todolah.debug.xcconfig */,
+				8D28D5D5EB4EB84D22D1EDF3 /* Pods-Todolah.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		60248BFE268C2519003275FC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6048D16726888A0100ADEB87 /* MainViewController.swift */,
+				60248BFF268C2578003275FC /* AddViewController.swift */,
+				60248C01268C2585003275FC /* EditViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		6048D15726888A0000ADEB87 = {
 			isa = PBXGroup;
 			children = (
 				6048D16226888A0100ADEB87 /* Todolah */,
 				6048D16126888A0100ADEB87 /* Products */,
+				0BD5B3AC3E57E087880A21D9 /* Pods */,
+				AC9993609B359B20B619E9C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +86,23 @@
 		6048D16226888A0100ADEB87 /* Todolah */ = {
 			isa = PBXGroup;
 			children = (
+				60248BFE268C2519003275FC /* Controller */,
 				6048D16326888A0100ADEB87 /* AppDelegate.swift */,
 				6048D16526888A0100ADEB87 /* SceneDelegate.swift */,
-				6048D16726888A0100ADEB87 /* ViewController.swift */,
 				6048D16926888A0100ADEB87 /* Main.storyboard */,
 				6048D16C26888A0300ADEB87 /* Assets.xcassets */,
 				6048D16E26888A0300ADEB87 /* LaunchScreen.storyboard */,
 				6048D17126888A0300ADEB87 /* Info.plist */,
 			);
 			path = Todolah;
+			sourceTree = "<group>";
+		};
+		AC9993609B359B20B619E9C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BBCE2A84DF751F25B177DE7 /* Pods_Todolah.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6048D17426888A0300ADEB87 /* Build configuration list for PBXNativeTarget "Todolah" */;
 			buildPhases = (
+				E2771A21F44D23D340B5659F /* [CP] Check Pods Manifest.lock */,
 				6048D15C26888A0100ADEB87 /* Sources */,
 				6048D15D26888A0100ADEB87 /* Frameworks */,
 				6048D15E26888A0100ADEB87 /* Resources */,
+				65B0ECAC0990729338D6AE24 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,13 +172,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		65B0ECAC0990729338D6AE24 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Todolah/Pods-Todolah-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Todolah/Pods-Todolah-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Todolah/Pods-Todolah-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2771A21F44D23D340B5659F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Todolah-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6048D15C26888A0100ADEB87 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6048D16826888A0100ADEB87 /* ViewController.swift in Sources */,
+				60248C02268C2585003275FC /* EditViewController.swift in Sources */,
+				6048D16826888A0100ADEB87 /* MainViewController.swift in Sources */,
 				6048D16426888A0100ADEB87 /* AppDelegate.swift in Sources */,
+				60248C00268C2578003275FC /* AddViewController.swift in Sources */,
 				6048D16626888A0100ADEB87 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +367,7 @@
 		};
 		6048D17526888A0300ADEB87 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 657F8A9DA9C1827479E4492F /* Pods-Todolah.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +387,7 @@
 		};
 		6048D17626888A0300ADEB87 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D28D5D5EB4EB84D22D1EDF3 /* Pods-Todolah.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
