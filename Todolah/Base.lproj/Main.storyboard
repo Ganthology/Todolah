@@ -160,7 +160,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uDe-Ul-Nqy">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter the description" translatesAutoresizingMaskIntoConstraints="NO" id="uDe-Ul-Nqy">
                                                 <rect key="frame" x="0.0" y="37" width="374" height="263"/>
                                                 <color key="textColor" systemColor="opaqueSeparatorColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

@@ -22,6 +22,8 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textView.delegate = self
+        
         textView.layer.cornerRadius = 5
         textView.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
         textView.layer.borderWidth = 0.5
@@ -53,5 +55,26 @@ class AddViewController: UIViewController {
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // Dismiss the keyboard when touching outside the textfield and textview
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
+}
+
+//MARK: - Text View delegate methods
+extension AddViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        textView.textColor = .label
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "Enter the description"
+            textView.textColor = .placeholderText
+        }
+    }
+    
 }
