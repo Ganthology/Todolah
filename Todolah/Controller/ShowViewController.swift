@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ShowViewController: UIViewController {
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var deadlinePicker: UIDatePicker!
+    
+    var item: Item?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,14 @@ class ShowViewController: UIViewController {
             textView.textColor = .placeholderText
         }
         
+        if let safeItem = item {
+            titleField.text = safeItem.title
+            textView.text = safeItem.desc
+            deadlinePicker.date = safeItem.deadline!
+        }
+        
     }
+
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

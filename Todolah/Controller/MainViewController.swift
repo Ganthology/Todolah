@@ -19,6 +19,8 @@ class MainViewController: UIViewController {
     
     var todoItems: Results<Item>?
     
+    var senderItem: Item?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,9 +63,14 @@ class MainViewController: UIViewController {
             destinationVC.status = categoryControl.titleForSegment(at: categoryControl.selectedSegmentIndex)
             destinationVC.completionHandler = { item in
                 self.save(item: item)
-                print(item.title)
-                print(item.category)
+//                print(item.title)
+//                print(item.category)
                 return item
+            }
+        } else if segue.identifier == "showTodoItem" {
+            let destinationVC = segue.destination as! ShowViewController
+            if let safeItem = senderItem {
+                destinationVC.item = safeItem
             }
         }
     }
@@ -122,19 +129,11 @@ extension MainViewController: UITableViewDelegate {
             }
         } else {
             print("Going to show details of item")
+            // direct to show view controller
+            senderItem = todoItems?[indexPath.row]
+            performSegue(withIdentifier: "showTodoItem", sender: self)
         }
         
-    }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        let selectedItem = todoItems?[indexPath.row]
-//
-//        do {
-//            try self.realm.write({
-//                selectedItem?.isSelected = false
-//            })
-//        } catch {
-//            print("Error saving edited isSelected property, \(error)")
-//        }
     }
     
     // detect pan gesture, start multiple selection

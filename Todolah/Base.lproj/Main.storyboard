@@ -460,7 +460,7 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="YqV-sn-g30">
                                                 <rect key="frame" x="0.0" y="37" width="374" height="263"/>
-                                                <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -499,30 +499,25 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5wP-ja-kaB">
                                         <rect key="frame" x="0.0" y="742" width="374" height="46"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qef-1c-5sN">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="46"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="46" id="eKI-nM-rX5"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="rgO-lv-rqo"/>
-                                                </constraints>
-                                                <state key="normal" title="Done"/>
-                                                <connections>
-                                                    <action selector="confirmButtonPressed:" destination="VDY-jW-seG" eventType="touchUpInside" id="Qel-VY-i9k"/>
-                                                    <action selector="doneButtonPressed:" destination="VDY-jW-seG" eventType="touchUpInside" id="NsW-24-9p3"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbT-b8-KlB">
-                                                <rect key="frame" x="244" y="0.0" width="130" height="46"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="pMf-3f-Rw9"/>
                                                     <constraint firstAttribute="height" constant="46" id="zO8-Wp-t8b"/>
                                                 </constraints>
-                                                <state key="normal">
-                                                    <color key="titleColor" systemColor="systemPinkColor"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" systemColor="linkColor"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="cancelButtonPressed:" destination="VDY-jW-seG" eventType="touchUpInside" id="KMU-WT-ya6"/>
+                                                    <action selector="doneButtonPressed:" destination="VDY-jW-seG" eventType="touchUpInside" id="kA7-fp-9mz"/>
                                                 </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qef-1c-5sN">
+                                                <rect key="frame" x="244" y="0.0" width="130" height="46"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46" id="eKI-nM-rX5"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="rgO-lv-rqo"/>
+                                                </constraints>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -565,6 +560,12 @@
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
