@@ -110,15 +110,20 @@ extension MainViewController: UITableViewDataSource {
 //MARK: - TableView Delegate methods
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let item = todoItems?[indexPath.row] {
-            do {
-                try realm.write({
-                    item.isSelected = !item.isSelected
-                })
-            } catch {
-                print("Error updating isSelected property, \(error)")
+        if tableView.allowsMultipleSelection {
+            if let item = todoItems?[indexPath.row] {
+                do {
+                    try realm.write({
+                        item.isSelected = !item.isSelected
+                    })
+                } catch {
+                    print("Error updating isSelected property, \(error)")
+                }
             }
+        } else {
+            print("Going to show details of item")
         }
+        
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
 //        let selectedItem = todoItems?[indexPath.row]
