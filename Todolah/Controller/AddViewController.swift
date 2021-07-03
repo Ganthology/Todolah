@@ -6,16 +6,13 @@
 //
 
 import UIKit
-import RealmSwift
 
 class AddViewController: UIViewController {
 
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var deadlinePicker: UIDatePicker!
-    
-    let realm = try! Realm()
-    
+        
     var status: String?
     var completionHandler: ((Item) -> Item)?
     

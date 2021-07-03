@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
         
         loadItems()
 
+        //print(todoItems?.count)
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +58,11 @@ class MainViewController: UIViewController {
         tableView.setEditing(false, animated: true)
     }
     
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "editTodoItem", sender: self)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTodoItem" {
             let destinationVC = segue.destination as! AddViewController
@@ -71,6 +77,25 @@ class MainViewController: UIViewController {
             let destinationVC = segue.destination as! ShowViewController
             if let safeItem = senderItem {
                 destinationVC.item = safeItem
+            }
+        } else if segue.identifier == "editTodoItem" {
+            let destinationVC = segue.destination as! EditViewController
+            if let safeItem = senderItem {
+                destinationVC.item = safeItem
+            }
+            destinationVC.completionHandler = { item in
+                do {
+                    try self.realm.write {
+                        self.senderItem?.title = item.title
+                        self.senderItem?.desc = item.desc
+                        self.senderItem?.category = item.category
+                        self.senderItem?.deadline = item.deadline
+                    }
+                    self.tableView.reloadData()
+                } catch {
+                    print("Error updating edited item, \(error)")
+                }
+                return item
             }
         }
     }
@@ -100,7 +125,7 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItem")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItem", for: indexPath)
         
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
@@ -117,8 +142,10 @@ extension MainViewController: UITableViewDataSource {
 //MARK: - TableView Delegate methods
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.allowsMultipleSelection {
+        if tableView.isEditing {
+            print("is editing")
             if let item = todoItems?[indexPath.row] {
+                senderItem = item
                 do {
                     try realm.write({
                         item.isSelected = !item.isSelected
@@ -129,11 +156,28 @@ extension MainViewController: UITableViewDelegate {
             }
         } else {
             print("Going to show details of item")
+            print("\(indexPath)")
             // direct to show view controller
-            senderItem = todoItems?[indexPath.row]
-            performSegue(withIdentifier: "showTodoItem", sender: self)
+            if let item = todoItems?[indexPath.row] {
+                senderItem = item
+                performSegue(withIdentifier: "showTodoItem", sender: self)
+            }
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.isEditing {
+            if let item = todoItems?[indexPath.row] {
+                do {
+                    try realm.write({
+                        item.isSelected = !item.isSelected
+                    })
+                } catch {
+                    print("Error updating isSelected property, \(error)")
+                }
+            }
+        }
     }
     
     // detect pan gesture, start multiple selection

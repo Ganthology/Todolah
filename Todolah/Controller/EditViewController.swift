@@ -9,10 +9,17 @@ import UIKit
 
 class EditViewController: UIViewController {
 
+    @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var deadlinePicker: UIDatePicker!
     
+    var item: Item?
+    var completionHandler: ((Item) -> Item)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textView.delegate = self
         
         textView.layer.cornerRadius = 5
         textView.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
@@ -24,17 +31,63 @@ class EditViewController: UIViewController {
             textView.backgroundColor = .systemBackground
             textView.textColor = .placeholderText
         }
+        
+        // load item to the view
+        if let safeItem = item {
+            titleField.text = safeItem.title
+            textView.text = safeItem.desc
+            deadlinePicker.date = safeItem.deadline!
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func confirmButtonPressed(_ sender: UIButton) {
+        let newItem = Item()
+        newItem.title = titleField.text ?? "No Title"
+        newItem.desc = textView.text == "Enter the description" ? "No Description" : textView.text
+        newItem.deadline = deadlinePicker.date
+        newItem.category = item!.category
+        
+        let _ = completionHandler?(newItem)
+        
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
+    
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func completeButtonPressed(_ sender: UIButton) {
+        let newItem = Item()
+        newItem.title = titleField.text ?? "No Title"
+        newItem.desc = textView.text == "Enter the description" ? "No Description" : textView.text
+        newItem.deadline = deadlinePicker.date
+        newItem.category = "Completed"
+        
+        let _ = completionHandler?(newItem)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // Dismiss the keyboard when touching outside the textfield and textview
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
+}
+//MARK: - Text View delegate methods
+extension EditViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        textView.textColor = .label
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "Enter the description"
+            textView.textColor = .placeholderText
+        }
+    }
+    
 }

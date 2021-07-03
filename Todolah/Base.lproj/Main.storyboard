@@ -70,11 +70,15 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Etk-ee-JTt">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="835" width="414" height="49"/>
                                 <items>
                                     <barButtonItem title="Delete" id="nBo-ti-RLY"/>
                                     <barButtonItem systemItem="flexibleSpace" id="rtv-db-rpi"/>
-                                    <barButtonItem title="Edit" id="5vF-Ik-G94"/>
+                                    <barButtonItem title="Edit" id="5vF-Ik-G94">
+                                        <connections>
+                                            <action selector="editButtonPressed:" destination="BYZ-38-t0r" id="Lo7-iB-9lH"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="mpE-qv-ubT"/>
                                     <barButtonItem title="Complete" id="tSZ-cU-NeI"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="92I-UD-ler"/>
@@ -90,7 +94,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="z3w-CM-hGP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1Wm-Js-SJP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Etk-ee-JTt" secondAttribute="bottom" id="2eX-Gj-jsX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Etk-ee-JTt" secondAttribute="bottom" constant="-22" id="2eX-Gj-jsX"/>
                             <constraint firstItem="Etk-ee-JTt" firstAttribute="leading" secondItem="k5F-9W-Il5" secondAttribute="leading" id="4va-Ky-PzD"/>
                             <constraint firstItem="Etk-ee-JTt" firstAttribute="trailing" secondItem="k5F-9W-Il5" secondAttribute="trailing" id="GrB-qK-AuT"/>
                             <constraint firstItem="k5F-9W-Il5" firstAttribute="top" secondItem="z3w-CM-hGP" secondAttribute="bottom" id="IRg-Rs-pVJ"/>
@@ -310,8 +314,7 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZKQ-KU-Yz8">
                                                 <rect key="frame" x="0.0" y="37" width="374" height="263"/>
-                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
@@ -356,6 +359,9 @@
                                                     <constraint firstAttribute="height" constant="46" id="BIs-YL-H8w"/>
                                                 </constraints>
                                                 <state key="normal" title="Confirm"/>
+                                                <connections>
+                                                    <action selector="confirmButtonPressed:" destination="cDx-nl-2za" eventType="touchUpInside" id="cAP-F8-f5C"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lN9-4d-vQJ">
                                                 <rect key="frame" x="137" y="0.0" width="100" height="46"/>
@@ -366,6 +372,9 @@
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" systemColor="systemPinkColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="cDx-nl-2za" eventType="touchUpInside" id="Zuf-6r-Cz4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiW-bm-hHa">
                                                 <rect key="frame" x="274" y="0.0" width="100" height="46"/>
@@ -376,6 +385,9 @@
                                                 <state key="normal" title="Complete">
                                                     <color key="titleColor" systemColor="systemGreenColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="completeButtonPressed:" destination="cDx-nl-2za" eventType="touchUpInside" id="kUy-xE-HlR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -406,7 +418,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deadlinePicker" destination="XMV-dZ-7Jr" id="4t1-EE-Jdp"/>
                         <outlet property="textView" destination="ZKQ-KU-Yz8" id="0fq-9N-g1y"/>
+                        <outlet property="titleField" destination="Wh7-TM-WrH" id="ehG-3l-9hs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHk-TZ-Nae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
