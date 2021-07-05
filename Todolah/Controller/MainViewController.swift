@@ -112,7 +112,8 @@ class MainViewController: UIViewController {
     
     func loadItems() {
         todoItems = realm.objects(Item.self)
-        loadCategoryItems()
+        //loadCategoryItems()
+        categoryItems = todoItems?.filter("category CONTAINS %@", categoryControl.titleForSegment(at: categoryControl.selectedSegmentIndex)!)
         tableView.reloadData()
     }
     
@@ -131,12 +132,27 @@ class MainViewController: UIViewController {
 //MARK: - TableView Data Source methods
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return todoItems?.count ?? 1
-        return categoryItems?.count ?? 1
+        if let items = categoryItems {
+            if items.count == 0 {
+                // when the list is empty
+                return 1
+            }
+            return items.count
+        } else {
+            // when the list is nil
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItem", for: indexPath)
+        
+        // display when the list is empty
+        if categoryItems?.count == 0 {
+            cell.textLabel?.text = "No items to display. Please press \"+\" to add new items."
+            cell.detailTextLabel?.text = ""
+            return cell
+        }
         
         if let item = categoryItems?[indexPath.row] {
             cell.textLabel?.text = item.title
