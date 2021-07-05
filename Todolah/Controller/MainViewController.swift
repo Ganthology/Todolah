@@ -147,6 +147,13 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItem", for: indexPath)
         
+        // Create Date Formatter
+        let dateFormatter = DateFormatter()
+        
+        // Set Date/Time Style
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        
         // display when the list is empty
         if categoryItems?.count == 0 {
             cell.textLabel?.text = "No items to display. Please press \"+\" to add new items."
@@ -156,7 +163,7 @@ extension MainViewController: UITableViewDataSource {
         
         if let item = categoryItems?[indexPath.row] {
             cell.textLabel?.text = item.title
-            cell.detailTextLabel?.text = "Deadline: \(String(describing: item.deadline))"
+            cell.detailTextLabel?.text = "Deadline: \(dateFormatter.string(from: item.deadline!))"
         } else {
             cell.textLabel?.text = "No items to display. Please press \"+\" to add new items."
             cell.detailTextLabel?.text = ""
