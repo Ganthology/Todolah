@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     let realm = try! Realm()
     
     var todoItems: Results<Item>?
+    var categoryItems: Results<Item>?
     
     var senderItem: Item?
     
@@ -91,7 +92,9 @@ class MainViewController: UIViewController {
                         self.senderItem?.category = item.category
                         self.senderItem?.deadline = item.deadline
                     }
-                    self.tableView.reloadData()
+                    // Changed
+//                    self.tableView.reloadData()
+                    self.loadItems()
                 } catch {
                     print("Error updating edited item, \(error)")
                 }
@@ -100,9 +103,16 @@ class MainViewController: UIViewController {
         }
     }
     
+    @IBAction func categoryControlButtonClicked(_ sender: UISegmentedControl) {
+        loadItems()
+    }
+    func loadCategoryItems() {
+        categoryItems = todoItems?.filter("category CONTAINS %@", categoryControl.titleForSegment(at: categoryControl.selectedSegmentIndex)!)
+    }
+    
     func loadItems() {
         todoItems = realm.objects(Item.self)
-        
+        loadCategoryItems()
         tableView.reloadData()
     }
     
@@ -121,13 +131,14 @@ class MainViewController: UIViewController {
 //MARK: - TableView Data Source methods
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoItems?.count ?? 1
+//        return todoItems?.count ?? 1
+        return categoryItems?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItem", for: indexPath)
         
-        if let item = todoItems?[indexPath.row] {
+        if let item = categoryItems?[indexPath.row] {
             cell.textLabel?.text = item.title
             cell.detailTextLabel?.text = "Deadline: \(String(describing: item.deadline))"
         } else {

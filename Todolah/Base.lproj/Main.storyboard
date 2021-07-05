@@ -30,6 +30,9 @@
                                                 <segment title="Completed"/>
                                                 <segment title="Overdue"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="categoryControlButtonClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="fQ3-hV-U8x"/>
+                                            </connections>
                                         </segmentedControl>
                                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="RbV-3X-hpL">
                                             <connections>
