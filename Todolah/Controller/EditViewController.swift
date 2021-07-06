@@ -42,7 +42,7 @@ class EditViewController: UIViewController {
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
         let newItem = Item()
-        newItem.title = titleField.text ?? "No Title"
+        newItem.title = titleField.text! == "" ? "No Title" : titleField.text!
         newItem.desc = textView.text == "Enter the description" ? "No Description" : textView.text
         newItem.deadline = deadlinePicker.date
         newItem.category = item!.category
@@ -58,7 +58,7 @@ class EditViewController: UIViewController {
     
     @IBAction func completeButtonPressed(_ sender: UIButton) {
         let newItem = Item()
-        newItem.title = titleField.text ?? "No Title"
+        newItem.title = titleField.text! == "" ? "No Title" : titleField.text!
         newItem.desc = textView.text == "Enter the description" ? "No Description" : textView.text
         newItem.deadline = deadlinePicker.date
         newItem.category = "Completed"

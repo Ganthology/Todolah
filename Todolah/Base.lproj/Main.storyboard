@@ -75,15 +75,23 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Etk-ee-JTt">
                                 <rect key="frame" x="0.0" y="835" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Delete" id="nBo-ti-RLY"/>
+                                    <barButtonItem enabled="NO" title="Delete" id="nBo-ti-RLY">
+                                        <connections>
+                                            <action selector="deleteButtonPressed:" destination="BYZ-38-t0r" id="UST-Mz-Tt2"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="rtv-db-rpi"/>
-                                    <barButtonItem title="Edit" id="5vF-Ik-G94">
+                                    <barButtonItem enabled="NO" title="Edit" id="5vF-Ik-G94">
                                         <connections>
                                             <action selector="editButtonPressed:" destination="BYZ-38-t0r" id="Lo7-iB-9lH"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="mpE-qv-ubT"/>
-                                    <barButtonItem title="Complete" id="tSZ-cU-NeI"/>
+                                    <barButtonItem enabled="NO" title="Complete" id="tSZ-cU-NeI">
+                                        <connections>
+                                            <action selector="completeButtonPressed:" destination="BYZ-38-t0r" id="9YY-js-Q8D"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="92I-UD-ler"/>
                                     <barButtonItem systemItem="cancel" id="c4H-RS-eDF">
                                         <connections>
