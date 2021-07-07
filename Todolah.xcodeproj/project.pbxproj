@@ -24,6 +24,7 @@
 		5BBCE2A84DF751F25B177DE7 /* Pods_Todolah.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todolah.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60248BFF268C2578003275FC /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		60248C01268C2585003275FC /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		602F289A2695862B00984111 /* Todolah.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Todolah.entitlements; sourceTree = "<group>"; };
 		6048D16026888A0100ADEB87 /* Todolah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todolah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6048D16326888A0100ADEB87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6048D16526888A0100ADEB87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		6048D16226888A0100ADEB87 /* Todolah */ = {
 			isa = PBXGroup;
 			children = (
+				602F289A2695862B00984111 /* Todolah.entitlements */,
 				60D27EA5268CEAA700BCCF04 /* Model */,
 				60248BFE268C2519003275FC /* Controller */,
 				6048D16326888A0100ADEB87 /* AppDelegate.swift */,
@@ -387,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Todolah/Todolah.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BBB34PKL3Z;
 				INFOPLIST_FILE = Todolah/Info.plist;
@@ -407,6 +410,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Todolah/Todolah.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BBB34PKL3Z;
 				INFOPLIST_FILE = Todolah/Info.plist;

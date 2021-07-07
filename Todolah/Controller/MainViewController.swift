@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class MainViewController: UIViewController {
     
@@ -36,9 +37,46 @@ class MainViewController: UIViewController {
         cancelToolbarItem.tintColor = .red
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
+                
         loadItems()
+        
+        // Ask for push notification permission
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, error in
+            
+            if error != nil {
+                print("error occurred when requesting authorization, \(error!)")
+            }
+        }
 
+    }
+    
+    func scheduleReminder(item: Item) {
+        let content = UNMutableNotificationContent()
+        
+        content.title = "Todolah"
+        content.sound = .default
+        content.body = "\(item.title) is reaching its deadline in 10 minutes"
+        
+        let date = item.deadline!.addingTimeInterval(-10.0 * 60.0)
+        print("\(item.title)")
+        print("deadline: \(item.deadline!)")
+        print("\(date)")
+                
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+    
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "\(item.dateCreated)", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if error != nil {
+                print("error occurred when requesting authorization, \(error!)")
+            }
+        }
+    }
+    
+    func removeReminder(item: Item) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["\(item.dateCreated)"])
     }
 
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -63,6 +101,9 @@ class MainViewController: UIViewController {
         if let safeSelectedItems = selectedItems {
             for item in safeSelectedItems {
                 do {
+                    // remove the scheduled push notifications
+                    // since its completed
+                    removeReminder(item: item)
                     try realm.write({
                         item.category = "Completed"
                         item.isSelected = false
@@ -81,6 +122,8 @@ class MainViewController: UIViewController {
         if let safeSelectedItems = selectedItems {
             for item in safeSelectedItems {
                 do {
+                    // Remove the scheduled push notification
+                    removeReminder(item: item)
                     try realm.write({
                         realm.delete(item)
                     })
@@ -106,6 +149,10 @@ class MainViewController: UIViewController {
             // received the new item from AddViewController
             destinationVC.completionHandler = { item in
                 self.save(item: item)
+                // Schedule push notification for new item
+                if item.category == "Pending" {
+                    self.scheduleReminder(item: item)
+                }
                 return item
             }
         } else if segue.identifier == "showTodoItem" {
@@ -131,6 +178,11 @@ class MainViewController: UIViewController {
                         self.senderItem?.deadline = item.deadline
                         self.senderItem?.isSelected = item.isSelected
                     }
+                    // Renew the push notification when edited
+                    if self.senderItem?.category == "Pending" {
+                        self.removeReminder(item: self.senderItem!)
+                        self.scheduleReminder(item: self.senderItem!)
+                    }
                     // Changed
 //                    self.tableView.reloadData()
                     self.loadItems()
@@ -142,6 +194,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    // When the SegmentedControl is clicked
     @IBAction func categoryControlButtonClicked(_ sender: UISegmentedControl) {
         loadItems()
     }
@@ -156,6 +209,7 @@ class MainViewController: UIViewController {
         tableView.reloadData()
     }
     
+    // Save the item to Realm database
     func save(item: Item) {
         do {
             try realm.write({
@@ -173,7 +227,6 @@ class MainViewController: UIViewController {
     
     func updateToolbar() {
         // enable selected bar items based on current category
-        toolbar.items?[3].isEnabled = true
         let buttonListIndex = [0,2,4]
 
         if let selectedCount = selectedItems?.count {
@@ -278,7 +331,6 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
-            print("is editing")
             if let item = categoryItems?[indexPath.row] {
                 senderItem = item
                 do {
@@ -292,8 +344,6 @@ extension MainViewController: UITableViewDelegate {
                 updateToolbar()
             }
         } else {
-            print("Going to show details of item")
-            print("\(indexPath)")
             // direct to show view controller
             if categoryItems?.count != 0 {
                 if let item = categoryItems?[indexPath.row] {
@@ -338,3 +388,23 @@ extension MainViewController: UITableViewDelegate {
 
 }
 
+//MARK: - Date rounding methods
+public extension Date {
+
+    public func round(precision: TimeInterval) -> Date {
+        return round(precision: precision, rule: .toNearestOrAwayFromZero)
+    }
+
+    public func ceil(precision: TimeInterval) -> Date {
+        return round(precision: precision, rule: .up)
+    }
+
+    public func floor(precision: TimeInterval) -> Date {
+        return round(precision: precision, rule: .down)
+    }
+
+    private func round(precision: TimeInterval, rule: FloatingPointRoundingRule) -> Date {
+        let seconds = (self.timeIntervalSinceReferenceDate / precision).rounded(rule) *  precision;
+        return Date(timeIntervalSinceReferenceDate: seconds)
+    }
+}
