@@ -47,9 +47,18 @@ class MainViewController: UIViewController {
                 print("error occurred when requesting authorization, \(error!)")
             }
         }
+        
+        let notificationCenter = NotificationCenter.default
 
+        // Detect when app enter foreground
+        notificationCenter.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
+    @objc func appCameToForeground() {
+        updatePendingItems()
+        loadItems()
+    }
+        
     func scheduleReminder(item: Item) {
         let content = UNMutableNotificationContent()
         
@@ -279,9 +288,28 @@ class MainViewController: UIViewController {
                 print("Something out of the category control is chosen")
             }
         }
-
+    }
+    
+    func updatePendingItems() {
+        let pendingItems = todoItems?.filter("category == %@", "Pending")
+                
+        if let safeItems = pendingItems {
+            for item in safeItems {
+                // Current Date exceeds Item deadline
+                if Date() > item.deadline! {
+                    do {
+                        try realm.write({
+                            item.category = "Overdue"
+                        })
+                    } catch {
+                        print("Error when updating items past deadline, \(error)")
+                    }
+                }
+            }
+        }
     }
 }
+
 
 //MARK: - TableView Data Source methods
 extension MainViewController: UITableViewDataSource {
