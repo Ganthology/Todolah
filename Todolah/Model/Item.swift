@@ -14,4 +14,5 @@ class Item: Object {
     @objc dynamic var category: String = "Pending"
     @objc dynamic var deadline: Date?
     @objc dynamic var isSelected: Bool = false
+    @objc dynamic var dateCreated: Date = Date()
 }
