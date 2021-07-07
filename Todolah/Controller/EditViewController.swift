@@ -44,7 +44,7 @@ class EditViewController: UIViewController {
         let newItem = Item()
         newItem.title = titleField.text! == "" ? "No Title" : titleField.text!
         newItem.desc = textView.text == "Enter the description" ? "No Description" : textView.text
-        newItem.deadline = deadlinePicker.date
+        newItem.deadline = deadlinePicker.date.floor(precision: 60)
         newItem.category = item!.category
         
         let _ = completionHandler?(newItem)
@@ -60,7 +60,7 @@ class EditViewController: UIViewController {
         let newItem = Item()
         newItem.title = titleField.text! == "" ? "No Title" : titleField.text!
         newItem.desc = textView.text == "Enter the description" ? "No Description" : textView.text
-        newItem.deadline = deadlinePicker.date
+        newItem.deadline = deadlinePicker.date.floor(precision: 60)
         newItem.category = "Completed"
         
         let _ = completionHandler?(newItem)
@@ -91,3 +91,4 @@ extension EditViewController: UITextViewDelegate {
     }
     
 }
+

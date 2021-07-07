@@ -41,7 +41,7 @@ class AddViewController: UIViewController {
         let newItem = Item()
         newItem.title = titleField.text! == "" ? "No Title" : titleField.text!
         newItem.desc = textView.text == "Enter the description" ? "No Description" : textView.text
-        newItem.deadline = deadlinePicker.date
+        newItem.deadline = deadlinePicker.date.floor(precision: 60)
         newItem.category = status ?? "pending"
         
         let _ = completionHandler?(newItem)
@@ -75,3 +75,4 @@ extension AddViewController: UITextViewDelegate {
     }
     
 }
+
