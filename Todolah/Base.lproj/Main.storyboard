@@ -73,7 +73,7 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Etk-ee-JTt">
-                                <rect key="frame" x="0.0" y="783" width="390" height="49"/>
+                                <rect key="frame" x="0.0" y="771" width="390" height="49"/>
                                 <items>
                                     <barButtonItem enabled="NO" title="Delete" id="nBo-ti-RLY">
                                         <connections>
@@ -105,7 +105,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="z3w-CM-hGP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1Wm-Js-SJP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Etk-ee-JTt" secondAttribute="bottom" constant="-22" id="2eX-Gj-jsX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Etk-ee-JTt" secondAttribute="bottom" constant="-10" id="2eX-Gj-jsX"/>
                             <constraint firstItem="Etk-ee-JTt" firstAttribute="leading" secondItem="k5F-9W-Il5" secondAttribute="leading" id="4va-Ky-PzD"/>
                             <constraint firstItem="Etk-ee-JTt" firstAttribute="trailing" secondItem="k5F-9W-Il5" secondAttribute="trailing" id="GrB-qK-AuT"/>
                             <constraint firstItem="k5F-9W-Il5" firstAttribute="top" secondItem="z3w-CM-hGP" secondAttribute="bottom" id="IRg-Rs-pVJ"/>
